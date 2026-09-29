@@ -1,0 +1,19 @@
+# Ambiente e cache
+venv/
+__pycache__/
+*.pyc
+
+# Perfil do Chrome usado na automação (não é código do projeto)
+ChromeDebug/
+
+# Arquivos grandes de entrada e dados operacionais
+pdfs/
+dados/*.xlsx
+dados/*.txt
+
+# Saídas geradas automaticamente
+logs/
+*.bak_*
+livros_cadastrados.txt
+exemplares_cadastrados.txt
+exemplares_nao_encontrados.txt

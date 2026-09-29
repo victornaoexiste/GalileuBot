@@ -1,0 +1,77 @@
+╔══════════════════════════════════════════════════════════════╗
+║           GALILEU BOT - CADASTRO AUTOMÁTICO DE LIVROS        ║
+║              Colégio Politécnico Dom Luciano                  ║
+╚══════════════════════════════════════════════════════════════╝
+
+ESTRUTURA DAS PASTAS
+─────────────────────────────────────────────
+GalileuBot/
+├── LEIA-ME.txt                 ← Este arquivo
+├── 1_cadastrar_livros.py       ← PASSO 1: Cadastra os títulos
+├── 2_cadastrar_exemplares.py   ← PASSO 2: Cadastra os exemplares
+│
+├── dados/
+│   ├── planilhaBase.xlsx           ← Planilha com os livros
+│   ├── livros_cadastrados.txt      ← Gerado automaticamente
+│   ├── exemplares_cadastrados.txt  ← Gerado automaticamente
+│   └── exemplares_nao_encontrados.txt ← Gerado automaticamente
+│
+├── pdfs/                       ← Coloque os PDFs aqui
+│   └── (nomes devem ser iguais à coluna H da planilha)
+│
+└── logs/
+    ├── livros/                 ← Logs do script de livros
+    └── exemplares/             ← Logs do script de exemplares
+
+
+PRÉ-REQUISITOS (instalar uma vez)
+─────────────────────────────────────────────
+1. Python 3.10 ou superior
+   https://www.python.org/downloads/
+
+2. Instalar dependências (abra o cmd e cole):
+   pip install selenium webdriver-manager openpyxl
+
+
+COMO USAR
+─────────────────────────────────────────────
+
+PASSO 1 — Abrir o Chrome com depuração remota
+   Abra o Prompt de Comando (cmd) e cole:
+   "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="%USERPROFILE%\ChromeDebug"
+
+   Faça login no Galileu (appgalileu.com.br) nessa janela.
+
+PASSO 2 — Cadastrar os Títulos
+   Abra outro cmd, vá até a pasta GalileuBot:
+   cd C:\caminho\para\GalileuBot
+   python 1_cadastrar_livros.py
+
+   O script vai cadastrar todos os livros da planilha.
+   Os que já foram feitos são pulados automaticamente.
+
+PASSO 3 — Cadastrar os Exemplares
+   Com o Chrome ainda aberto e logado:
+   python 2_cadastrar_exemplares.py
+
+   O script vai cadastrar um exemplar para cada livro.
+   Configuração fixa dos exemplares:
+     • Disponível para: TODOS
+     • Unidade: Centro Educativo Januarense
+     • Tombo: Automático
+     • Tipo Aquisição: Acervo Público Online
+     • Situação: Disponível
+
+
+DICAS IMPORTANTES
+─────────────────────────────────────────────
+✔ Mantenha o Chrome aberto durante toda a execução.
+✔ Não mexa no Chrome enquanto o bot estiver rodando.
+✔ Se o script parar, basta rodar de novo — ele continua de onde parou.
+✔ Os arquivos .txt na pasta dados/ controlam o progresso.
+  Para recomeçar do zero, apague o .txt correspondente.
+✔ Em caso de erro, veja os detalhes na pasta logs/.
+
+SUPORTE
+─────────────────────────────────────────────
+Em caso de dúvidas, consulte os logs na pasta logs/.
